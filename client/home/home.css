@@ -1,0 +1,60 @@
+/* Dashboard */
+
+.home {
+  margin-top: 60px;
+}
+.home h1 {
+    font-size: 40px;
+}
+.home ul {
+  list-style-type: none;
+  padding: 0;
+}
+.home ul li {
+  padding: 10px 0 10px 25px;
+}
+.navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+}
+.home * a:hover{
+  text-decoration:none;
+}
+.home ul li span a {
+  color: #fff;
+}
+.home * h2 {
+  margin-top: 40px;
+}
+
+/* Navbar */
+.navbar-right li a {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* Homepage */
+
+.sign-in {
+  color: #666;
+}
+.jumbotron {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+#signout {
+  color: #333;
+}
+.navbar {
+  background-color: #d9534f;
+  color: #fff;
+}
+.feature-badge h1 {
+  font-size: 80px;
+  text-align: center;
+}
+
+.feature-badge h2 {
+  text-align: center;
+}

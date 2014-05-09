@@ -1,0 +1,68 @@
+<template name="edit">
+  {{>navbar }}
+  <div class="home container">
+    <h1 class="workout-name editable">{{ workout.name }}</h1>
+      <button type="button" class="btn btn-default btn-success add-section">Add Section</button>
+      <button id="delete" class="btn btn-default pull-right">Delete</button>
+      <button id="save" class="btn btn-danger pull-right">Save</button>
+    {{#each workout.sections}}
+      {{> editSection }}
+    {{/each}}
+  </div>
+  {{>accountModal}}
+</template>
+
+<template name="editSection">
+  <div class="edit-section">
+    <hr>
+    <h3 class="section-name editable">
+      {{this.name}}
+    </h3>
+
+      <button type="button" class="btn btn-default btn-success add-move">Add Move</button>
+
+      <button class="btn btn-warning pull-right del-section">Delete Section</button>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default up-section"><span class="glyphicon glyphicon-arrow-up"></span></button>
+        <button type="button" class="btn btn-default down-section"><span class="glyphicon glyphicon-arrow-down"></span></button>
+      </div>
+
+    <table class="table move-table">
+      <tr>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Time per Rep</th>
+        <th>Cooldown</th>
+        <th></th>
+      </tr>
+      {{#each this.movements}}
+        {{> editMove }}
+      {{/each}}
+    </table>
+  </div>
+</template>
+
+
+<template name="editMove">
+  <tr class="edit-move">
+    <td><input class="form-control edit-name" type="text" value="{{this.name}}"></td>
+    <td><input class="form-control edit-count" type="range" step="5" min="10" max="300" value="{{this.count}}"> <span class="count-label">{{this.count}}</span></td>
+    <td>
+      <select class="form-control edit-time_per">
+        {{{time_per_options}}}
+      </select>
+    </td>
+    <td>
+      <select class="form-control edit-cooldown">
+        {{{cooldown_options}}}
+      </select>
+    </td>
+    <td class="td-control">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default up-move"><span class="glyphicon glyphicon-arrow-up"></span></button>
+        <button type="button" class="btn btn-default down-move"><span class="glyphicon glyphicon-arrow-down"></span></button>
+      </div>
+      <button type="button" class="btn btn-default btn-warning del-move"><span class="glyphicon glyphicon-remove"></span></button>
+    </td>
+  </tr>
+</template>
