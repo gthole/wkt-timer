@@ -1,8 +1,0 @@
-{
-    "name": "jquery-sidebar",
-    "description": "SidebarJS is a jQuery plugin for side navigation.",
-    "homepage": "http://makotot.github.io/sidebar/",
-    "author": "makoto tateno",
-    "version": "0.2.0",
-    "git": "https://github.com/makotot/sidebar.git"
-}

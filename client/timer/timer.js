@@ -42,12 +42,6 @@ Router.map(function() {
   })
 });
 
-Template.sequence.activeClass = function () {
-  var move = Session.get('move');
-  if (move && move.indexID == this.indexID)
-    return 'activeMove'
-  return ''
-}
 
 Template.status.running = function() {
   return Session.equals('state', 'running');
@@ -129,6 +123,10 @@ function timer()
   Session.set('count', count);
   Session.set('totalTime', Session.get('totalTime') + 1);
 
+  var move = Session.get('move');
+  var percent = (((move.elapsed_time + move.count - count) * 100) / Session.get('totalWorkoutTime')) + '%';
+  $('.progress').css({width: percent});
+
   if (count <= 0)
   {
     var chime = $('#chime').get(0);
@@ -136,7 +134,6 @@ function timer()
     chime.play();
 
     clearCounter();
-    var move = Session.get('move');
     if (move.isCoolDown) {
       startNext(1);
     } else {
@@ -145,6 +142,7 @@ function timer()
         {
           'name': 'Cooldown',
           'time_per': 1,
+          'elapsed_time': move.elapsed_time + move.count,
           'count': move.cooldown,
           'indexID': move.indexID,
           'index': move.index,
@@ -207,15 +205,19 @@ function clearCounter() {
 function createQueue() {
   var wkt = Workouts.findOne({_id: Session.get('wid')});
   var queue = [];
+  var elapsed_time = 0;
 
   wkt.sections.map(function(section) {
     section.movements.map(function(move) {
       move.cooldown = move.cooldown ? move.cooldown : section.defaultCooldown;
       move.index = queue.length;
       move.time_per = move.time_per ? move.time_per : 1;
+      move.elapsed_time = elapsed_time;
       queue.push(move);
+      elapsed_time += move.count + move.cooldown;
     });
   });
+  Session.set('totalWorkoutTime', elapsed_time);
   Session.set('queue', queue);
 }
 
@@ -252,44 +254,36 @@ function pauseOrStart() {
 
 // Events
 Template.timer.rendered = function(){
-  $('#jsi-nav').sidebar({
-    trigger: '.menu-toggle',
-    scrollbarDisplay: true
-  });
-
   $(window).on('keydown', function(e){
-    e.preventDefault();
     if (e.which === 32) {
+      e.preventDefault();
       pauseOrStart();
     }
     else if (e.which == 27) {
+      e.preventDefault();
       clearCounter();
       clearSession();
     }
     else if (e.which == 38) {
+      e.preventDefault();
       clearCounter();
       startNext(-1);
     }
     else if (e.which == 40) {
+      e.preventDefault();
       clearCounter();
       startNext(1);
     }
   });
 };
 
-Template.sequence.events({
-  'click .movement-tab': function() {
-    startSequence(this.indexID);
-  }
-})
-
 Template.timer.events({
   'click .menu-toggle': function(e) {
     // Let jquery-sidebar run
     e.stopPropagation();
   },
-  'click .jsc-sidebar-content': function(e) {
-    e.stopPropagation();
+  'click .content': function(e) {
+    e.preventDefault();
     pauseOrStart();
   }
 });

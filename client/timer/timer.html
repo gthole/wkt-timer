@@ -1,35 +1,18 @@
 <template name="timer">
-  <div class="jsc-sidebar-content jsc-sidebar-pulled">
+  <div class="content">
     {{> status }}
   </div>
-  <nav class="sidebar jsc-sidebar" id="jsi-nav" data-sidebar-options="">
-    {{> sequence }}
-  </nav>
+  <div class="progress-bar">
+    <div class="progress"></div>
+  </div>
   <audio id="chime" preload="auto" autobuffer>
     <source src="/tone.mp3" />
   </audio>
 </template>
 
-<template name="sequence">
-  <div class="wktName">{{name}}</div>
-  <div class="sidebar-body">
-    <ul>
-    {{#each this.sections}}
-        <hr>
-        <li class="section-header">{{this.name}}</li>
-      {{#each this.movements}}
-        <li class="movement-tab {{activeClass}}" id="{{ this.indexID }}">
-          {{this.name}}
-        </li>
-      {{/each}}
-    {{/each}}
-    </ul>
-  </div>
-</template>
-
 <template name="status">
   <div class="top-bar">
-    <span class="menu-toggle glyphicon glyphicon-align-justify"></span>
+    <a href="/"><span class="menu-toggle glyphicon glyphicon-align-justify"></span></a>
     <span class="total pull-right">{{formattedTotal}}</span>
   </div>
   <div class="main {{statusClass}}">
@@ -43,5 +26,4 @@
       <h2 class="timer-name muted">{{statusText}}</h2>
     {{/if}}
   </div>
-  <div class="la-anim-13"></div>
 </template>
