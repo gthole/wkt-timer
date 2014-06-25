@@ -11,95 +11,17 @@
 
 
 <template name="landing">
-  <div class="jumbotron">
-    <div class="container">
+  <div class="row">
+    <div class="col-sm-5 land-side">
+      <img src="/img/clock.png" class="landing-img hidden-xs" />
+    </div>
+    <div class="col-sm-7">
       <h1>Move That Thing!</h1>
       <p>Customizable workout timer lets you structure your own routine with minimal guidance.</p>
 
       <p>Ditch the DVD and overly peppy video trainer, put on some music, and start burning your own way.</p>
-      <p><a class="btn btn-default btn-lg sign-in" role="button" data-toggle="modal" data-target="#accountModal">Sign In &raquo;</a></p>
+      <p><a class="btn btn-default btn-lg sign-in" role="button" data-toggle="modal" data-target="#accountModal">Get Started &raquo;</a></p>
     </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 feature-badge">
-        <h1><span class="glyphicon glyphicon-th-list"></span></h1>
-        <h2>Build Your Own</h2>
-        <p>Create and structure your own routines with multiple sections, cooldowns, and rep timers.  Or you can see public routines that others have shared.</p>
-      </div>
-      <div class="col-md-4 feature-badge">
-        <h1><span class="glyphicon glyphicon-stats"></span></h1>
-        <h2>Track Your Progress</h2>
-        <p>Finish a routine and we keep track of how long you went for.  Set goals for yourself, and get into better shape without paying for a gym or sitting through that same video you know by heart already.</p>
-     </div>
-      <div class="col-md-4 feature-badge">
-        <h1><span class="glyphicon glyphicon-retweet"></span></h1>
-        <h2>Early Alpha</h2>
-        <p>Get involved with the Alpha implementation of <emph>wkt</emph>.  We're building more features and getting things working - join the fun!</p>
-      </div>
-    </div>
-
-    <br />
-    <br />
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">What is this?</h2>
-        <p class="lead"><em>wkt</em> is a customizeable workout timer.</p>
-        <p class="lead">Instead of following a DVD or attending a class, you can build a workout routine of all the moves you want to do, with cooldown times.</p>
-        <p class="lead"><em>wkt</em> leads you through the workout with a minimal presence and interface to let you set music and get your sweat on.</p>
-        <p class="lead">When you're done, <em>wkt</em> keeps track of the time you put in so you can set goals and track your progress.</p>
-      </div>
-      <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="/img/clock.png" alt="Generic placeholder image">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 col-md-push-5">
-        <h2 class="featurette-heading">Why?</h2>
-        <p class="lead">We built <em>wkt</em> because we wanted it.
-          <ul class="lead">
-            <li>It's free, and always will be.</li>
-            <li>Log in with a social accounts.<br />(You don't need to create yet another account.)</li>
-            <li>We won't gather any data on you except your name.</li>
-          </ul>
-        </p>
-        <p class="lead">So jump right in.  Why not?</p>
-      </div>
-      <div class="col-md-5 col-md-pull-7">
-        <img class="featurette-image img-responsive" src="/img/dots.png" alt="Generic placeholder image">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Just an Alpha?</h2>
-        <p class="lead">There's <strong>lots to do</strong>.  We're on Github, and are slowly (but slowly!) building out the feature set.  On the docket:</p>
-        <ul class="lead">
-          <li>Progress tracking and weekly goals.</li>
-          <li>Better mobile support</li>
-          <li>Shareable and public workout routines.</li>
-          <li>Fitbit integration</li>
-        </ul>
-        <p class="lead">Want to help?  Fork us on Github and send a pull request or two.</p>
-      </div>
-      <div class="col-md-5">
-        <img class="featurette-image img-responsive" src="/img/lift.png" alt="Generic placeholder image">
-      </div>
-    </div>
-
-    <br />
-
-    <footer>
-      <p>&copy; gthole</p>
-    </footer>
   </div>
   {{>accountModal}}
 </template>
