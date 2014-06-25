@@ -7,7 +7,6 @@ standard-app-packages
 autopublish
 insecure
 iron-router
-jquery-sidebar
 bootstrap-3
 accounts-ui
 accounts-github
